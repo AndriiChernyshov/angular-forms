@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+
+//let nameControl = new FormControl("Nate")
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  
 }
