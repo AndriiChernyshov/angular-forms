@@ -1,0 +1,15 @@
+{
+    "user": 
+    { 
+        "firstName": "Alex", 
+        "lastName": "Bondarenko", 
+        "email": "alex.bondarenko@net.com", 
+        "country": "Ukraine", 
+        "age": 21 
+    },
+    "countries": [
+        "Ukraine",
+        "Bulgaria",
+        "Poland"
+    ]
+}

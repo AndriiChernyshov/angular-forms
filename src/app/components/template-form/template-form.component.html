@@ -1,0 +1,23 @@
+<p>
+  template-form works!
+</p>
+<div class="panel-body">
+  <form class="form-horizontal" novalidate #templateForm="ngForm">
+    <fieldset>
+      <label class="col-md-2 control-label" for="firstNameId">First Name</label>
+      <div class="col-md-8">
+        <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)" required minlength="3" [(ngModel)]=user.firstName
+          name="firstName" #firstNameVar="ngModel" />
+        <span class="help-block" *ngIf="(firstNameVar.touched || firstNameVar.dirty) && firstNameVar.errors">
+          <span *ngIf="firstNameVar.errors.required">
+              Please enter your first name.
+          </span>
+        <span *ngIf="firstNameVar.errors.minlength">
+              The first name must be longer than 3 characters.
+          </span>
+        </span>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
