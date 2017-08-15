@@ -1,6 +1,26 @@
-<h4 class="ui horizontal divider header">
-  Hello
-</h4>
-<app-demo-form></app-demo-form>
+<div>
+  <div>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          
+          <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/">HTTP and Form's validation</a>
+          </div>
 
+          <ul class="nav navbar-nav">
+            <li routerLinkActive="active" >
+              <a routerLink="/reactive">Reactive Forms</a>
+            </li>
+            <li routerLinkActive="active" >
+              <a routerLink="/template">Template driven Template forms</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+
+</div>

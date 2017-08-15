@@ -1,0 +1,186 @@
+<p>
+  template-form works!
+</p>
+<div class="panel-body">
+  <form *ngIf="user" class="form-horizontal" 
+    novalidate 
+    #templateForm="ngForm">
+    <fieldset>
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="firstNameId">First Name</label>
+        <div class="col-md-8">
+          <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)" name="firstName"
+            required 
+            minlength="3" 
+            maxlength="50"
+            [(ngModel)]=user.firstName
+            #firstNameVar="ngModel" />
+          <span class="help-block" *ngIf="(firstNameVar.touched || firstNameVar.dirty) && firstNameVar.errors">
+            <span *ngIf="firstNameVar.errors.required">
+                Please enter your first name.
+            </span>
+            <span *ngIf="firstNameVar.errors.maxlength">
+                The first name must be less than 50 characters.
+            </span>
+            <span *ngIf="firstNameVar.errors.minlength">
+                The first name must be longer than 3 characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-2 control-label" for="lastNameId">Last Name</label>
+          <div class="col-md-8">
+              <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)"
+                     required
+                     maxlength="50"
+                     minlength="3"
+                     [(ngModel)]="user.lastName"
+                     name="lastName"
+                     #lastNameVar="ngModel" />
+              <span class="help-block" *ngIf="(lastNameVar.touched || lastNameVar.dirty) && lastNameVar.errors">
+                  <span *ngIf="lastNameVar.errors.required">
+                      Please enter your last name.
+                  </span>
+                  <span *ngIf="lastNameVar.errors.maxlength">
+                      The first name must be less than 50 characters.
+                  </span>
+                  <span *ngIf="lastNameVar.errors.minlength">
+                      The first name must be longer than 3 characters.
+                  </span>
+              </span>
+
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-2 control-label"
+              for="emailId">Email</label>
+
+          <div class="col-md-8">
+              <input class="form-control" id="emailId" type="email" placeholder="Email (required)" name="email"
+                     required
+                     email
+                      [(ngModel)]="user.email"
+                     #emailVar="ngModel" />
+              <span class="help-block" *ngIf="(emailVar.touched || emailVar.dirty) && emailVar.errors">
+                <span *ngIf="emailVar.errors.required">
+                  Please enter your email address.
+                </span>
+                <span *ngIf="emailVar.errors.email">
+                  Please enter a valid email address
+                </span>
+              </span>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-2 control-label"
+              for="countryId">Country</label>
+
+          <div class="col-md-8">
+              <input class="form-control" id="countryId" type="text" placeholder="Country (required)" name="country"
+                  required
+                  [(ngModel)]="user.country"
+                  #countryVar="ngModel" />
+              <span class="help-block" *ngIf="(countryVar.touched || countryVar.dirty) && countryVar.errors">
+                <span *ngIf="countryVar.errors.required">
+                  Please enter your country.
+                </span>
+              </span>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-2 control-label"
+              for="ageId">Age</label>
+
+          <div class="col-md-8">
+              <input class="form-control" id="ageId" type="number" placeholder="Age (required)" name="age"
+                  required
+                  min="1"
+                  max="200"
+                  step="1"
+                  [(ngModel)]="user.age"
+                  #ageVar="ngModel" />
+              <span class="help-block" *ngIf="(ageVar.touched || ageVar.dirty) && ageVar.errors">
+                <span *ngIf="ageVar.errors.required">
+                  Please enter your country.
+                </span>
+                <span *ngIf="ageVar.errors.min">
+                    The age should be greater than 0.
+                </span>
+                <span *ngIf="ageVar.errors.max">
+                  The age should be less than 200.
+                </span>
+              </span>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-2 control-label">Gender</label>
+
+          <div class="col-md-8">
+            <label class="radio-online">
+              <input id="genderId" type="radio" name="gender" value="Male" />
+              Male
+            </label>
+            <label class="radio-online">
+              <input id="genderId" type="radio" name="gender" value="Female" />
+              Female
+            </label>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-2 control-label">Hobbies</label>
+
+          <div class="col-md-8 checkbox">
+          <label>
+              <input id="hobbyHikingId" name="hobbyHiking" type="checkbox" value="Hiking" />
+              Hiking
+          </label>
+
+          <label>
+              <input id="hobbySwimmingId" name="hobbySwimming" type="checkbox" value="Swimming" />
+              Swimming
+          </label>
+
+          <label>
+              <input id="hobbyRunningId" name="hobbyRunning" type="checkbox" value="Running" />
+              Running
+          </label>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-md-2 control-label" for="CommentsId">Comments</label>
+          <div class="col-md-8">
+              <input class="form-control" id="CommentsId" type="text" placeholder="Comments"
+                     [(ngModel)]="user.comments"
+                     name="comments"
+                     #lastNameVar="ngModel" />
+          </div>
+      </div>
+
+      <div class="form-group" *ngFor="let visit of user.visits; let i = index; let last = last">
+          <label class="col-md-2 control-label">Visit {{i+1}}</label>
+          <div class="col-md-4">
+              <input class="form-control" id="VisitId{{i}}" type="text" placeholder="Date of visit" name="visit" />
+          </div>
+          <div class="btn" *ngIf="last">
+            <button id="addVisit" name="addVisit">Add visit</button>
+          </div>
+          <div class="btn" *ngIf="last">
+            <button id="removeVisit" name="removeVisit">Remove visit</button>
+          </div>
+      </div>
+
+      <div class="col-md-4 col-md-offset-4"> 
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="button" (click)="clear()">Clear</button>
+      </div>
+    </fieldset>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+{
+    "user": 
+    { 
+        "firstName": "Alex", 
+        "lastName": "Bondarenko", 
+        "email": "alex.bondarenko@net.com", 
+        "country": "Ukraine", 
+        "age": 21,
+        "isMale": true,
+        "hobby": ["Hiking", "Swimming", "Running"],
+        "comments": "free text",
+        "visits": ["1/1/2001", "2/2/2002"]
+    },
+    "countries": [
+        "Ukraine",
+        "Bulgaria",
+        "Poland"
+    ]
+}

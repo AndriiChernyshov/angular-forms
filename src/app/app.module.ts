@@ -1,21 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpModule, JsonpModule } from '@angular/http';
 
+import { AppRoutingModule, appRouterComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DemoFormComponent } from './components/demo-form/demo-form.component';
+
+import { UserPromiseService } from './services'
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoFormComponent
+    appRouterComponents
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    HttpModule,
+    JsonpModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    UserPromiseService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(router: Router){
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+}
