@@ -80,10 +80,14 @@
               for="countryId">Country</label>
 
           <div class="col-md-8">
-              <input class="form-control" id="countryId" type="text" placeholder="Country (required)" name="country"
-                  required
+              <select class="form-control" id="countryId" placeholder="Country (required)" name="country"
+                  
                   [(ngModel)]="user.country"
-                  #countryVar="ngModel" />
+                  #countryVar="ngModel" >
+              <option *ngFor="let country of countries">
+                {{country}}
+              </option>
+              </select>
               <span class="help-block" *ngIf="(countryVar.touched || countryVar.dirty) && countryVar.errors">
                 <span *ngIf="countryVar.errors.required">
                   Please enter your country.
@@ -138,17 +142,17 @@
 
           <div class="col-md-8 checkbox">
           <label>
-              <input id="hobbyHikingId" name="hobbyHiking" type="checkbox" value="Hiking" />
+              <input id="hobbyHikingId" name="hobbyHiking" type="checkbox" value="Hiking" [checked]="user.hasHikingHobby()"/>
               Hiking
           </label>
 
           <label>
-              <input id="hobbySwimmingId" name="hobbySwimming" type="checkbox" value="Swimming" />
+              <input id="hobbySwimmingId" name="hobbySwimming" type="checkbox" value="Swimming" [checked]="user.hasSwimmingHobby()" />
               Swimming
           </label>
 
           <label>
-              <input id="hobbyRunningId" name="hobbyRunning" type="checkbox" value="Running" />
+              <input id="hobbyRunningId" name="hobbyRunning" type="checkbox" value="Running" [checked]="user.hasRunningHobby()" />
               Running
           </label>
           </div>

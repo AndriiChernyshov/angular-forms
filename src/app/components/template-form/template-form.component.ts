@@ -10,20 +10,25 @@ import { UserPromiseService } from '../../services';
 })
 export class TemplateFormComponent implements OnInit {
 
-  public user: User
+  public user: User;
+  public countries: Array<string>;
+
   constructor(
     public userPromiseService: UserPromiseService
   ) { }
 
   ngOnInit() {
    
-
       this.sleep(1)
       .then( () =>  this.userPromiseService.getUser()
-      .then(user => {this.user = user; console.log(this.user); })
+      .then(usr => {this.user = Object.assign(new User(), usr);})
       .catch((err) => console.log(err)));
      
-      console.log(this.user);
+      this.userPromiseService.getCountries()
+        .then(countries => this.countries = countries)
+        .catch((err) => console.log(err));
+
+      //console.log(this.user);
   }
 
   sleep(ms) {

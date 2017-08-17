@@ -7,18 +7,27 @@ import { User } from '../models/user';
 @Injectable()
 export class UserPromiseService {
  
-  private tasksUrl = 'http://localhost:3000/user';
+  private userUrl = 'http://localhost:3000/user';
+  private countriesUrl = 'http://localhost:3000/countries';
 
   constructor(
     private http: Http
   ) {}
 
   public getUser(): Promise<User> {
-    return this.http.get(this.tasksUrl)
+    return this.http.get(this.userUrl)
             .toPromise()
             .then( response => <User>response.json())
             .catch(this.handleError);
-            
+
+  }
+
+  public getCountries(): Promise<Array<string>>{
+    return this.http.get(this.countriesUrl)
+      .toPromise()
+      .then( response => <Array<string>>response.json())
+      .catch(this.handleError);
+
   }
 
   private handleError(error: any): Promise<any> {
