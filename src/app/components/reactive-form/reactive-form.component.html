@@ -1,7 +1,8 @@
 <div class="panel-body">
+
   <form *ngIf="user" class="form-horizontal" 
     novalidate 
-    #reactiveForm="ngForm" (ngSubmit)="saveForm(reactiveForm)">
+    [formGroup]="reactiveFormGroup" (ngSubmit)="saveForm(reactiveForm)">
     <fieldset>
       <div class="form-group">
         <label class="col-md-2 control-label" for="firstNameId">First Name</label>
