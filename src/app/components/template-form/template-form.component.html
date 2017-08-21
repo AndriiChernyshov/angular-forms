@@ -4,7 +4,7 @@
 <div class="panel-body">
   <form *ngIf="user" class="form-horizontal" 
     novalidate 
-    #templateForm="ngForm">
+    #templateForm="ngForm" (ngSubmit)="saveForm(templateForm)">
     <fieldset>
       <div class="form-group">
         <label class="col-md-2 control-label" for="firstNameId">First Name</label>
@@ -182,7 +182,7 @@
       </div>
 
       <div class="col-md-4 col-md-offset-4"> 
-        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!templateForm.valid" >Save</button>
         <button class="btn btn-primary" type="button" (click)="clear()">Clear</button>
       </div>
     </fieldset>

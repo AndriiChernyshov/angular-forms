@@ -27,12 +27,20 @@ export class TemplateFormComponent implements OnInit {
       this.userPromiseService.getCountries()
         .then(countries => this.countries = countries)
         .catch((err) => console.log(err));
-
-      //console.log(this.user);
   }
 
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  saveForm(form: any): void{
+    console.log(form);
+  }
+
+  clear(): void{
+    this.userPromiseService.getUser()
+    .then(usr => {this.user = Object.assign(new User(), usr);})
+    .catch((err) => console.log(err))
   }
 
 }
